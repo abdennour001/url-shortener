@@ -8,26 +8,38 @@
         <title>Document</title>
     </head>
     <body>
-        <h1>Url Shortener</h1>
-        <p class="text-muted">By Amokrane Abdennour</p>
-        <img src="assets/undraw_link.svg" width="50%" alt="image logo" />
-        <form class="form" action="#">
-            <div class="form-group">
-                <label for="slug">Slug:</label>
-                <input id="slug" type="text" placeholder="Slug" />
-            </div>
-            <div class="form-group">
-                <label for="url">Url:</label>
-                <input id="url" type="text" placeholder="Url" />
-            </div>
-            <button type="submit">Add</button>
-        </form>
+        <div>
+            <h1>Url Shortener</h1>
+            <p class="text-muted">By Amokrane Abdennour</p>
+        </div>
+        <div class="content">
+            <img
+                class="logo"
+                src="assets/undraw_link.svg"
+                width="40%"
+                alt="image logo"
+            />
+            <form class="form" action="#">
+                <div class="form-group">
+                    <label for="slug">Slug</label>
+                    <input id="slug" type="text" placeholder="Slug" />
+                </div>
+                <div class="form-group">
+                    <label for="url">Url</label>
+                    <input id="url" type="text" placeholder="Url" />
+                </div>
+                <button class="submit" type="submit">Add</button>
+            </form>
+        </div>
 
         <footer>
-            <p>
+            <p class="text-muted">
                 Copyright © 2020 AMOKRANE Abdennour |
-                <a href="https://github.com/abdennour001/url-shortener">Link to Github</a>
+                <a href="https://github.com/abdennour001/url-shortener"
+                    >Link to Github</a
+                >
             </p>
         </footer>
     </body>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
 </html>

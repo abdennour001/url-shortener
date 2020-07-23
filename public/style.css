@@ -1,15 +1,90 @@
 :root {
     --main-color: #6c63ff;
+    --main-color-darker: #6660e3;
+}
+
+* {
+    margin: 0 auto;
+    padding: 0;
 }
 
 body {
     font-family: "Open Sans", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 h1 {
     color: var(--main-color);
+    font-size: 3.5rem;
+}
+
+.content {
+    padding: 2rem;  
+    display: flex;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+}
+
+.content .form {
+    width: 40%;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .form > * {
+    margin: 0.3rem;
+    width: 100%;
+}
+
+.content .form .submit {
+    font-size: 1.1rem;
+    width: 100%;
+    color: white;
+    padding: 10px 2rem;
+    margin-top: 1.5rem;
+    border: none;
+    background: var(--main-color);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease;
+}
+
+.content .form .form-group > input[type="text"] {
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px var(--main-color) solid;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 50px;
+}
+
+.content .form .form-group > input[type="text"]:focus,
+.submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 1pt var(--main-color);
+}
+
+.content .form .form-group > input[type="text"]::placeholder {
+    color: var(--main-color);
+}
+
+.content .form .submit:hover {
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.3);
+    background-color: var(--main-color-darker);
 }
 
 .text-muted {
     color: rgba(0, 0, 0, 0.5);
+}
+
+footer {
 }
