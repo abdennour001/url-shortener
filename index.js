@@ -1,20 +1,26 @@
+const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
 const yup = require("yup");
 const helmet = require("helmet");
 const cors = require("cors");
 const monk = require("monk");
+const { nanoid } = require("nanoid");
 var validUrl = require("valid-url");
 require("dotenv").config();
 
 const app = express();
-const db = monk(process.env.MONGODB_URI);
+const db = monk(process.env.MONGODB_URI + "mock");
+db.on("open", () => {
+    console.log("Database connected.");
+});
 const urls = db.get("urls");
 urls.createIndex({ slug: 1 }, { unique: true });
 
 app.use(helmet());
 app.use(morgan("common"));
 app.use(express.json());
+app.use(express.static("./public"));
 
 //CORS Should be restricted
 app.use(function(req, res, next) {
@@ -26,14 +32,10 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get("/", (req, res) => {
-    res.send("hello world!");
-});
+const errorPage = path.join(__dirname, "public/404.html");
 
-app.get("/:slug", (req, res) => {});
-
-app.post("/url", (req, res) => {
-    const { slug, url } = req.body;
+app.post("/url", async (req, res) => {
+    let { slug, url } = req.body;
 
     if (!url) {
         return res.status(400).send({ error: "url is required" });
@@ -46,9 +48,35 @@ app.post("/url", (req, res) => {
 
     if (!slug) {
         // generate a random slug
+        slug = nanoid(5);
+        slug = slug.toLowerCase();
+    }
+
+    const existing = await urls.findOne({ slug });
+    if (existing) {
+        return res.status(404).send({ error: "Slug in use. 🍔" });
+    }
+
+    // all good insert url
+    const created = urls
+        .insert({ slug: slug, url: url })
+        .then(docs => {
+            // send feed back
+            res.json(docs);
+        })
+        .catch(err => {
+            return res.status(404).send({ error: err });
+        });
+});
+
+app.get("/:slug", async (req, res) => {
+    const { slug } = req.params;
+
+    const existing = await urls.findOne({ slug });
+    if (existing) {
+        res.redirect(existing.url);
     } else {
-        // all good insert url
-        urls.insert({ slug: slug, url: url });
+        res.status(404).sendFile(errorPage);
     }
 });
 
