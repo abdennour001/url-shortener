@@ -6,11 +6,12 @@ const helmet = require("helmet");
 const cors = require("cors");
 const monk = require("monk");
 const { nanoid } = require("nanoid");
+const bodyParser = require("body-parser");
 var validUrl = require("valid-url");
 require("dotenv").config();
 
 const app = express();
-const db = monk(process.env.MONGODB_URI + "mock");
+const db = monk(process.env.MONGODB_URI);
 db.on("open", () => {
     console.log("Database connected.");
 });
@@ -31,6 +32,9 @@ app.use(function(req, res, next) {
     );
     next();
 });
+
+// Use the body parser middleware for post requests
+app.use(bodyParser.json());
 
 const errorPage = path.join(__dirname, "public/404.html");
 
