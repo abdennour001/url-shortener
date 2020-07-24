@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     const result = await response.json();
                     this.error = false;
                     this.success = true;
-                    this.created = document.location.origin + "/" + this.slug;
+                    this.created = document.location.origin + "/" + result.slug;
                     this.slug = "";
                     this.url = "";
                     console.log(result);
