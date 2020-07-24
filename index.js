@@ -8,7 +8,7 @@ const monk = require("monk");
 const { nanoid } = require("nanoid");
 const bodyParser = require("body-parser");
 var validUrl = require("valid-url");
-require("dotenv").config();
+if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
 const app = express();
 const db = monk(process.env.MONGODB_URI);
