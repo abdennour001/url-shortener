@@ -33,6 +33,20 @@ h1 {
     justify-content: center;
 }
 
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .content {
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .logo {
+        width: 65%;
+    }
+}
+
 .content .form {
     width: 40%;
     font-size: 1.1rem;
@@ -40,6 +54,14 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .content .form {
+        width: 80%;
+        font-size: 0.9rem;
+    }
 }
 
 .content .form > * {
@@ -65,6 +87,13 @@ h1 {
     transition: box-shadow 0.5s ease;
 }
 
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .content .form .submit {
+        font-size: 1rem;
+    }
+}
+
 .content .form .form-group > input[type="text"] {
     font-size: 1rem;
     width: 100%;
@@ -73,6 +102,12 @@ h1 {
     padding: 14px 20px;
     margin: 8px 0;
     border-radius: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+    .content .form .form-group > input[type="text"] {
+        padding: 12px 18px;
+    }
 }
 
 .content .form .form-group > input[type="text"]:focus,
@@ -121,6 +156,19 @@ h1 {
     flex-direction: column;
 }
 
+@media only screen and (max-width: 768px) {
+    .title h1 {
+        font-size: 3rem;
+        margin-top: 1rem;
+    }
+}
+
 a {
     color: var(--main-color);
+}
+
+@media only screen and (max-width: 768px) {
+    footer {
+        font-size: 0.9rem;
+    }
 }
