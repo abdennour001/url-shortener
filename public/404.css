@@ -1,0 +1,60 @@
+:root {
+    --main-color: #6c63ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+}
+
+img {
+    margin: 1rem 0;
+    max-width: 30%;
+}
+
+h1 {
+    margin: 1rem 0;
+    font-size: 3rem;
+}
+
+.go-home-link {
+    display: flex;
+    margin-top: 3rem;
+    align-items: center;
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: white;
+    background: var(--main-color);
+    border-radius: 50px;
+    padding: 10px 2rem;
+    cursor: pointer;
+    transition: box-shadow .5s ease;
+}
+
+.go-home-link:hover {
+    box-shadow: 0 8px 6px -6px rgba(0, 0, 0, 0.3);
+}
+
+.arrow {
+    margin-right: 1rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.go-home-link:hover .arrow {
+    transform: translateX(-5px);
+}
